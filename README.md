@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## RailsのDocker環境です
 
-Things you may want to cover:
+* Ruby version: 2.5
+* Rails version: 5.1
 
-* Ruby version
+## Dockerコマンド
 
-* System dependencies
+※ 新規でrailsプロジェクトを作成するときは以下のコマンドを叩いてください
+* docker-compose run web rails new . --force --database=mysql
 
-* Configuration
+* Railsイメージをビルドする
+$ docker-compose build
 
-* Database creation
+# config/database.ymlのdefault内にある以下の項目を修正内容
+password: password
+host: db
 
-* Database initialization
+# コンテナを実行するコマンド
+※ -dオプションでデタッチで実行します
+$ docker-compose up -d
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# dbを作成するをコマンド
+$ docker-compose run web bundle exec rake db:create
